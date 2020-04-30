@@ -8,8 +8,17 @@
         <link rel="stylesheet" type="text/css" href="site.css">
 
         <script src="site.js"></script>
+        <script src="bubbleSort.js"></script>
+        <script>
+            var arr;
+        </script>
+    
     </head>
     <body>
-        <button class="test" onclick="helloWorld()">Test</button>
+        <button class="generate" onclick="arr = generateArray()">Generate Array</button>
+        <button class="sort" onclick="bubbleSort(arr, 15)">Sort</button>
+        <button class="print" onclick="window.alert(arr)">Print</button>
+        <canvas></canvas>
+        <script src="canvas.js"></script>
     </body>
 </html>
