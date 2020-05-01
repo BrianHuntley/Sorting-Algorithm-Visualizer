@@ -9,6 +9,7 @@ function bubbleSort(arr, n){
     if(n != 1){
         bubbleSort(arr, --n);
     }else{
+        drawArray(arr);
         return arr;
     }
 }
