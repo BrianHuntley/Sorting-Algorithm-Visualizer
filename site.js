@@ -13,10 +13,9 @@ function generateArray(){
     var barArray = [];
     for(let i = 0; i < 15; ++i){
         var val = Math.round(Math.random()* 24)+1;
-        console.log(val);
         barArray.push(new Bar(val,i));
     }
-    console.log(barArray);
     drawArray(barArray);
-    return arr;
+    console.log(barArray);
+    return barArray;
 }
