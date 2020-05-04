@@ -1,11 +1,14 @@
 function Bar(val, pos){
     this.val = val;
     this.pos = pos;
+    this.x  = (centerX-375) + 50*this.pos;
+    this.y = centerY;
 
     this.draw = function(){
-        c.fillRect(centerX + 50*this.pos, centerY, 15, 15*-this.val);
+        this.x = (centerX-375) + 50*this.pos;
+        c.fillRect(this.x, this.y, 15, 15*-this.val);
         c.font = "30px Arial"
-        c.fillText(this.val, centerX + 50*this.pos, centerY + 30);
+        c.fillText(this.val, this.x, this.y + 30);
     }
 }
 
