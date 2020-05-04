@@ -13,7 +13,6 @@ function bubbleSort(arr, n){
     if(n != 1){
         bubbleSort(arr, --n);
     }else{
-        console.log(arr);
         drawArray(arr);
     }
 }

@@ -12,10 +12,9 @@ function Bar(val, pos){
 function generateArray(){
     var barArray = [];
     for(let i = 0; i < 15; ++i){
-        var val = Math.round(Math.random()* 24)+1;
+        var val = Math.ceil(Math.random()* 25);
         barArray.push(new Bar(val,i));
     }
     drawArray(barArray);
-    console.log(barArray);
     return barArray;
 }
