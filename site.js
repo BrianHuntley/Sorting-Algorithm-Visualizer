@@ -5,7 +5,6 @@ function Bar(val, pos){
     this.y = centerY;
 
     this.draw = function(){
-        this.x = (centerX-375) + 50*this.pos;
         c.fillRect(this.x, this.y, 15, 15*-this.val);
         c.font = "30px Arial"
         c.fillText(this.val, this.x, this.y + 30);
