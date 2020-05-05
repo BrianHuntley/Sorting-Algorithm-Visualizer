@@ -7,12 +7,13 @@ function bubbleSort(arr, n){
             arr[i + 1] = temp;
             //update positions
             arr[i].pos = i;
-            arr[i + 1].pos = i + 1; 
+            arr[i + 1].pos = i + 1;
+            animateSwap(arr[i + 1], arr[i]); 
         }
     }
     if(n != 1){
         bubbleSort(arr, --n);
     }else{
-        drawArray(arr);
+        return;
     }
 }
