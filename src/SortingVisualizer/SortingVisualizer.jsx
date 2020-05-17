@@ -9,6 +9,9 @@ import {mergeSort} from '../SortingAlgorithms/MergeSort.js'
 let NUMBER_OF_BARS = Math.floor(window.innerWidth / 32);
 let PADDING = (window.innerWidth % 32)/2;
 let MAX_HEIGHT = window.innerHeight - 80;
+let ANIMATION_SPEED = 30;
+let BAR_COLOR = "#588c7e";
+let COMPARE_COLOR = "red";
 
 export default class SortingVisualizer extends React.Component{
     constructor(props){
@@ -38,13 +41,13 @@ export default class SortingVisualizer extends React.Component{
             const arrayBars = document.getElementsByClassName('arrayBar');
             if(colorChange){
                 const [barOneIndex, barTwoIndex] = animations[i];
-                const color = (i % 3 === 0) ? "red" : "#588c7e";
+                const color = (i % 3 === 0) ? COMPARE_COLOR : BAR_COLOR;
                 const barOneStyle = arrayBars[barOneIndex].style;
                 const barTwoStyle = arrayBars[barTwoIndex].style;
                 setTimeout(() => {
                     barOneStyle.backgroundColor = color;
                     barTwoStyle.backgroundColor = color;
-                },i * 30);
+                },i * ANIMATION_SPEED);
                 
             }
             else{
@@ -52,7 +55,7 @@ export default class SortingVisualizer extends React.Component{
                     const [barOneIdx, newHeight] = animations[i];
                     const barOneStyle = arrayBars[barOneIdx].style;
                     barOneStyle.height = `${newHeight}px`;
-                  },i * 30);
+                  },i * ANIMATION_SPEED);
             }
         }
     
