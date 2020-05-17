@@ -22,7 +22,7 @@ body{
 
 .buttonContainer button{
     background-color: #ffcc5c;
-    border: none;
+    border: none; 
     color: #000000;
     outline: 0;
     display: inline-block;
