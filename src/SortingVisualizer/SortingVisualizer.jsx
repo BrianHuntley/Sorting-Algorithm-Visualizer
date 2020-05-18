@@ -2,7 +2,8 @@ import React from 'react';
 import './SortingVisualizer.css';
 import '../SortingAlgorithms/BubbleSort.js'
 import '../SortingAlgorithms/InsertionSort.js'
-import {mergeSort} from '../SortingAlgorithms/MergeSort.js'
+import {mergeSortAnimation} from '../SortingAlgorithms/MergeSort.js'
+import {bubbleSortAnimation} from '../SortingAlgorithms/BubbleSort.js';
 
 //Browser width & height determine how many values we can display and how tall
 //32px width per bar
@@ -31,11 +32,36 @@ export default class SortingVisualizer extends React.Component{
     }
 
     bubbleSort(){
-        
+        const animations = bubbleSortAnimation(this.state.array);
+        for (let i = 0; i < animations.length; ++i) {
+            const colorChange = (i % 4 === 0) || (i % 4 === 1);
+            const arrayBars = document.getElementsByClassName('arrayBar');
+            if(colorChange){
+                const [barOneIndex, barTwoIndex] = animations[i];
+                const color = (i % 4 === 0) ? COMPARE_COLOR : BAR_COLOR;
+                const barOneStyle = arrayBars[barOneIndex].style;
+                const barTwoStyle = arrayBars[barTwoIndex].style;
+                setTimeout(() => {
+                    barOneStyle.backgroundColor = color;
+                    barTwoStyle.backgroundColor = color;
+                },i * ANIMATION_SPEED);
+                
+            }
+            else{
+                const [barOneIdx, newHeight] = animations[i];
+                if(barOneIdx === -1){
+                    continue;
+                }
+                const barOneStyle = arrayBars[barOneIdx].style;
+                setTimeout(() =>{
+                barOneStyle.height = `${newHeight}px`;
+                },i * ANIMATION_SPEED);
+            }
+        }
     }
 
     mergeSort(){
-        const animations = mergeSort(this.state.array);
+        const animations = mergeSortAnimation(this.state.array);
         for (let i = 0; i < animations.length; ++i) {
             const colorChange = (i % 3 !== 2);
             const arrayBars = document.getElementsByClassName('arrayBar');

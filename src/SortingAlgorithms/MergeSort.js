@@ -1,4 +1,4 @@
-export function mergeSort(arr){
+export function mergeSortAnimation(arr){
     const animations = [];
     if (arr.length <= 1){
         return arr;
