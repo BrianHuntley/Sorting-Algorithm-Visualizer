@@ -1,22 +1,22 @@
-//working on this later
+export function insertionSortAnimation(arr){
+    const animations = [];
+    if(arr.length <= 1){
+        return arr;
+    }
+    insertionSort(arr, animations);
+    return animations;
+}
 
-// export function getInsertionSortAnimation(array){
-//     let animations = [];
-//     let auxillaryArray = array.slice();
-//     insertionSort(auxillaryArray, animations);
-// }
-
-// function insertionSort(arr, animations){
-//     const N = arr.length;
-//     for(let i = 0; i < N; ++i){
-//         for(let j = i; j > 0 && arr[j] < arr[j - 1]; --j){
-//             swap(arr[j], arr[j - 1]);
-//         }
-//     }
-// }
-
-// function swap(val1, val2){
-//     let temp = val1;
-//     val1 = val2;
-//     val2 = temp;
-// }
+function insertionSort(arr, animations){
+    for(let i = 0; i < arr.length; ++i){
+        for(let j = i; j > 0 && arr[j] < arr[j-1]; --j){
+            animations.push([j, j - 1]);
+            animations.push([j, j - 1]);
+            let temp = arr[j];
+            arr[j] = arr[j-1];
+            arr[j-1] = temp;
+            animations.push([j, arr[j]]);
+            animations.push([j-1, arr[j - 1]]);
+        }
+    }
+}
