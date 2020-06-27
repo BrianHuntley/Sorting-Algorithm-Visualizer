@@ -1,9 +1,10 @@
 import React from 'react';
 import './SortingVisualizer.css';
-import '../SortingAlgorithms/BubbleSort.js'
-import {insertionSortAnimation} from '../SortingAlgorithms/InsertionSort.js'
-import {mergeSortAnimation} from '../SortingAlgorithms/MergeSort.js'
+import '../SortingAlgorithms/BubbleSort.js';
+import {insertionSortAnimation} from '../SortingAlgorithms/InsertionSort.js';
+import {mergeSortAnimation} from '../SortingAlgorithms/MergeSort.js';
 import {bubbleSortAnimation} from '../SortingAlgorithms/BubbleSort.js';
+import {quickSortAnimation} from '../SortingAlgorithms/QuickSort.js';
 
 //Browser width & height determine how many values we can display and how tall
 //32px width per bar
