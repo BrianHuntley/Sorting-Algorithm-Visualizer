@@ -36,6 +36,7 @@ export default class SortingVisualizer extends React.Component{
             if(colorChange){
                 const [barOneIndex, barTwoIndex] = animations[i];
                 const color = (i % 4 === 0) ? COMPARE_COLOR : BAR_COLOR;
+                
                 const barOneStyle = arrayBars[barOneIndex].style;
                 const barTwoStyle = arrayBars[barTwoIndex].style;
                 setTimeout(() => {
