@@ -31,25 +31,20 @@ export default class SortingVisualizer extends React.Component{
     insertionSort(){
         const animations = insertionSortAnimation(this.state.array);
         for(let i = 0; i < animations.length; ++i){
-            const colorChange = (i % 4 === 0) || (i % 4 === 1);
+            const colorChange = (animations[i][0] === "firstCompare") || (animations[i][0] === "secondCompare");
             const arrayBars = document.getElementsByClassName('arrayBar');
             if(colorChange){
-                const [barOneIndex, barTwoIndex] = animations[i];
-                const color = (i % 4 === 0) ? COMPARE_COLOR : BAR_COLOR;
-                
+                const [x,barOneIndex, barTwoIndex] = animations[i];
+                const color = (animations[i][0] === "firstCompare") ? COMPARE_COLOR : BAR_COLOR;
                 const barOneStyle = arrayBars[barOneIndex].style;
                 const barTwoStyle = arrayBars[barTwoIndex].style;
                 setTimeout(() => {
                     barOneStyle.backgroundColor = color;
                     barTwoStyle.backgroundColor = color;
                 },i * ANIMATION_SPEED);
-                
             }
             else{
-                const [barOneIdx, newHeight] = animations[i];
-                if(barOneIdx === -1){
-                    continue;
-                }
+                const [x, barOneIdx, newHeight] = animations[i];
                 const barOneStyle = arrayBars[barOneIdx].style;
                 setTimeout(() =>{
                 barOneStyle.height = `${newHeight}px`;
