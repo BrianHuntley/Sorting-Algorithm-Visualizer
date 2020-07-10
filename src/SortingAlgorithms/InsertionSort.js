@@ -22,7 +22,7 @@ function insertionSort(arr, animations){
                 animations.push(["secondCompare", j, i]);
             }
         }
-        animations.push([j, ])
+        animations.push(["insert", j+1, key]);
         arr[j + 1] = key; 
     }
 }

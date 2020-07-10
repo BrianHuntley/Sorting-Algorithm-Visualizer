@@ -11,7 +11,7 @@ import {quickSortAnimation} from '../SortingAlgorithms/QuickSort.js';
 let NUMBER_OF_BARS = Math.floor(window.innerWidth / 32);
 let PADDING = (window.innerWidth % 32)/2;
 let MAX_HEIGHT = window.innerHeight - 80;
-let ANIMATION_SPEED = 30;
+let ANIMATION_SPEED = 20;
 let BAR_COLOR = "#588c7e";
 let COMPARE_COLOR = "red";
 
@@ -34,7 +34,8 @@ export default class SortingVisualizer extends React.Component{
             const colorChange = (animations[i][0] === "firstCompare") || (animations[i][0] === "secondCompare");
             const arrayBars = document.getElementsByClassName('arrayBar');
             if(colorChange){
-                const [x,barOneIndex, barTwoIndex] = animations[i];
+                const barOneIndex = animations[i][1];
+                const barTwoIndex = animations[i][2];
                 const color = (animations[i][0] === "firstCompare") ? COMPARE_COLOR : BAR_COLOR;
                 const barOneStyle = arrayBars[barOneIndex].style;
                 const barTwoStyle = arrayBars[barTwoIndex].style;
@@ -44,7 +45,10 @@ export default class SortingVisualizer extends React.Component{
                 },i * ANIMATION_SPEED);
             }
             else{
-                const [x, barOneIdx, newHeight] = animations[i];
+                const barOneIdx = animations[i][1];
+                const newHeight = animations[i][2];
+                console.log(barOneIdx);
+                console.log(animations);
                 const barOneStyle = arrayBars[barOneIdx].style;
                 setTimeout(() =>{
                 barOneStyle.height = `${newHeight}px`;
