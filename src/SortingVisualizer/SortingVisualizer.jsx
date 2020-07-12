@@ -47,8 +47,6 @@ export default class SortingVisualizer extends React.Component{
             else{
                 const barOneIdx = animations[i][1];
                 const newHeight = animations[i][2];
-                console.log(barOneIdx);
-                console.log(animations);
                 const barOneStyle = arrayBars[barOneIdx].style;
                 setTimeout(() =>{
                 barOneStyle.height = `${newHeight}px`;
@@ -114,7 +112,7 @@ export default class SortingVisualizer extends React.Component{
     }
 
     quickSort(){
-
+        const animations = quickSortAnimation(this.state.array);
     }
 
     resetArray(){
