@@ -20,8 +20,8 @@ function partition(arr, animations, lo, hi){
             ++i;
         }
         while(j > lo && arr[j] >= arr[lo]){
-            animations.push(["pivot", lo, i]);
-            animations.push(["compare", lo, i]);
+            animations.push(["pivot", lo, j]);
+            animations.push(["compare", lo, j]);
             --j;
         }
         if(j <= i){
