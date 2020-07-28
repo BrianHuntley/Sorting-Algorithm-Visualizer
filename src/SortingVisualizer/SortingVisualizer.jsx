@@ -29,6 +29,7 @@ export default class SortingVisualizer extends React.Component{
     }
 
     insertionSort(){
+        this.disableButtons();
         const animations = insertionSortAnimation(this.state.array);
         for(let i = 0; i < animations.length; ++i){
             const colorChange = (animations[i][0] === "firstCompare") || (animations[i][0] === "secondCompare");
@@ -42,6 +43,9 @@ export default class SortingVisualizer extends React.Component{
                 setTimeout(() => {
                     barOneStyle.backgroundColor = color;
                     barTwoStyle.backgroundColor = color;
+                    if(i+1 === animations.length){
+                        this.enableButtons();
+                    }
                 },i * ANIMATION_SPEED);
             }
             else{
@@ -50,12 +54,16 @@ export default class SortingVisualizer extends React.Component{
                 const barOneStyle = arrayBars[barOneIdx].style;
                 setTimeout(() =>{
                 barOneStyle.height = `${newHeight}px`;
+                if(i+1 === animations.length){
+                    this.enableButtons();
+                }
                 },i * ANIMATION_SPEED);
             }
         }
     }
 
     bubbleSort(){
+        this.disableButtons();
         const animations = bubbleSortAnimation(this.state.array);
         for (let i = 0; i < animations.length; ++i) {
             const colorChange = (animations[i][0] === "firstCompare") || (animations[i][0] === "secondCompare");
@@ -69,6 +77,9 @@ export default class SortingVisualizer extends React.Component{
                 setTimeout(() => {
                     barOneStyle.backgroundColor = color;
                     barTwoStyle.backgroundColor = color;
+                    if(i+1 === animations.length){
+                        this.enableButtons();
+                    }
                 },i * ANIMATION_SPEED);
                 
             }
@@ -78,12 +89,16 @@ export default class SortingVisualizer extends React.Component{
                 const barOneStyle = arrayBars[barOneIdx].style;
                 setTimeout(() =>{
                 barOneStyle.height = `${newHeight}px`;
+                if(i+1 === animations.length){
+                    this.enableButtons();
+                }
                 },i * ANIMATION_SPEED);
             }
         }
     }
 
     mergeSort(){
+        this.disableButtons();
         const animations = mergeSortAnimation(this.state.array);
         for (let i = 0; i < animations.length; ++i) {
             const colorChange = (i % 3 !== 2);
@@ -96,6 +111,9 @@ export default class SortingVisualizer extends React.Component{
                 setTimeout(() => {
                     barOneStyle.backgroundColor = color;
                     barTwoStyle.backgroundColor = color;
+                    if(i+1 === animations.length){
+                        this.enableButtons();
+                    }
                 },i * ANIMATION_SPEED);
                 
             }
@@ -104,13 +122,16 @@ export default class SortingVisualizer extends React.Component{
                     const [barOneIdx, newHeight] = animations[i];
                     const barOneStyle = arrayBars[barOneIdx].style;
                     barOneStyle.height = `${newHeight}px`;
+                    if(i+1 === animations.length){
+                        this.enableButtons();
+                    }
                   },i * ANIMATION_SPEED);
             }
         }
-    
     }
 
     quickSort(){
+        this.disableButtons();
         const animations = quickSortAnimation(this.state.array);
         for(let i = 0; i < animations.length; ++i){
             const colorChange = (animations[i][0] === "pivot") || (animations[i][0] === "compare");
@@ -124,6 +145,9 @@ export default class SortingVisualizer extends React.Component{
                 setTimeout(() => {
                     barOneStyle.backgroundColor = color;
                     barTwoStyle.backgroundColor = color;
+                    if(i+1 === animations.length){
+                        this.enableButtons();
+                    }
                 },i * ANIMATION_SPEED);
             }
             else{
@@ -132,6 +156,9 @@ export default class SortingVisualizer extends React.Component{
                 const barOneStyle = arrayBars[barOneIdx].style;
                 setTimeout(() =>{
                 barOneStyle.height = `${newHeight}px`;
+                if(i+1 === animations.length){
+                    this.enableButtons();
+                }
                 },i * ANIMATION_SPEED);
             }
         }
@@ -146,6 +173,21 @@ export default class SortingVisualizer extends React.Component{
         this.setState({array});
     }
 
+    disableButtons(){
+        document.getElementById("reset").disabled = true;
+        document.getElementById("insertion").disabled = true;
+        document.getElementById("bubble").disabled = true;
+        document.getElementById("merge").disabled = true;        
+        document.getElementById("quick").disabled = true;
+    }
+    enableButtons(){
+        document.getElementById("reset").disabled = false;
+        document.getElementById("insertion").disabled = false;
+        document.getElementById("bubble").disabled = false;
+        document.getElementById("merge").disabled = false;        
+        document.getElementById("quick").disabled = false;
+    }
+
     render(){
         const {array} = this.state;
 
@@ -155,11 +197,11 @@ export default class SortingVisualizer extends React.Component{
                     <div className="arrayBar" key={idx} style={{height: `${value}px`}}></div>
                 ))}
                 <div className="buttonContainer" style={{width:`${NUMBER_OF_BARS*32}px`}}>
-                        <button onClick={() => this.resetArray()}>New Array</button>
-                        <button onClick={() => this.insertionSort()}>Insertion Sort</button>
-                        <button onClick={() => this.bubbleSort()}>Bubble Sort</button>
-                        <button onClick={() => this.mergeSort()}>Merge Sort</button>
-                        <button onClick={() => this.quickSort()}>Quick Sort</button>
+                        <button id="reset" onClick={() => this.resetArray()}>New Array</button>
+                        <button id="insertion" onClick={() => this.insertionSort()}>Insertion Sort</button>
+                        <button id="bubble" onClick={() => this.bubbleSort()}>Bubble Sort</button>
+                        <button id="merge" onClick={() => this.mergeSort()}>Merge Sort</button>
+                        <button id="quick" onClick={() => this.quickSort()}>Quick Sort</button>
                 </div>
             </div>
             

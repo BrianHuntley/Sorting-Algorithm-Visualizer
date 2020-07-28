@@ -15,12 +15,10 @@ function partition(arr, animations, lo, hi){
         animations.push(["compare", lo, i]);
         animations.push(["pivot", lo, j]);
         animations.push(["compare", lo, j]);
-        while(i < hi && arr[i] <= arr[lo]){
-            
+        while(i < hi && arr[i] <= arr[lo]){  
             ++i;
         }
         while(j > lo && arr[j] >= arr[lo]){
-            
             --j;
         }
         if(j <= i){
