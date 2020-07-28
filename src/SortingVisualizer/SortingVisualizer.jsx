@@ -14,6 +14,8 @@ let MAX_HEIGHT = window.innerHeight - 80;
 let ANIMATION_SPEED = 20;
 let BAR_COLOR = "#588c7e";
 let COMPARE_COLOR = "red";
+let DISABLE_COLOR = "gray";
+let ENABLE_COLOR = "#ffcc5c"
 
 export default class SortingVisualizer extends React.Component{
     constructor(props){
@@ -175,17 +177,28 @@ export default class SortingVisualizer extends React.Component{
 
     disableButtons(){
         document.getElementById("reset").disabled = true;
+        document.getElementById("reset").style.backgroundColor = DISABLE_COLOR;
         document.getElementById("insertion").disabled = true;
+        document.getElementById("insertion").style.backgroundColor = DISABLE_COLOR;
         document.getElementById("bubble").disabled = true;
+        document.getElementById("bubble").style.backgroundColor = DISABLE_COLOR;
         document.getElementById("merge").disabled = true;        
+        document.getElementById("merge").style.backgroundColor = DISABLE_COLOR;
         document.getElementById("quick").disabled = true;
+        document.getElementById("quick").style.backgroundColor = DISABLE_COLOR;
+
     }
     enableButtons(){
         document.getElementById("reset").disabled = false;
+        document.getElementById("reset").style.backgroundColor = ENABLE_COLOR;
         document.getElementById("insertion").disabled = false;
+        document.getElementById("insertion").style.backgroundColor = ENABLE_COLOR;
         document.getElementById("bubble").disabled = false;
-        document.getElementById("merge").disabled = false;        
+        document.getElementById("bubble").style.backgroundColor = ENABLE_COLOR;
+        document.getElementById("merge").disabled = false;
+        document.getElementById("merge").style.backgroundColor = ENABLE_COLOR;        
         document.getElementById("quick").disabled = false;
+        document.getElementById("quick").style.backgroundColor = ENABLE_COLOR;
     }
 
     render(){
